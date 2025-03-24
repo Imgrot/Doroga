@@ -14,9 +14,17 @@ public class inputs : MonoBehaviour
     float cooldownDisparo = 0.4f;
     float cooldownActual = 0.0f;
 
+    public AudioSource audioSource;
+    public AudioClip sonidoDisparo;
+    public AudioClip sonidoDisparo2;
+
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     void Update()
@@ -33,7 +41,7 @@ public class inputs : MonoBehaviour
         float movimientoVertical = Input.GetAxis("Vertical");
         transform.Translate(Vector3.up * speedY * movimientoVertical * Time.deltaTime);
 
-            // Limites Verticales
+        // Limites Verticales
         if (transform.position.y > 4.3f)
         {
             transform.position = new Vector3(transform.position.x, 4.3f, 0);
@@ -43,17 +51,17 @@ public class inputs : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -4.3f, 0);
         }
 
-            // Limites Horizontales
+        // Limites Horizontales
         if (transform.position.x > 10.5f)
         {
             transform.position = new Vector3(10.5f, transform.position.y, 0);
         }
         else if (transform.position.x < -10.5f)
         {
-            transform.position = new Vector3( -10.5f, transform.position.y, 0);
+            transform.position = new Vector3(-10.5f, transform.position.y, 0);
         }
 
-            // Desplazamiento de Pantalla
+        // Desplazamiento de Pantalla
         // if(transform.position.x > 11f)
         // {
         //     transform.position = new Vector3(-11f, transform.position.y, 0);
@@ -66,9 +74,9 @@ public class inputs : MonoBehaviour
 
     public void InstanciarKoyuki()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
         {
-            if(Time.time > cooldownActual)
+            if (Time.time > cooldownActual)
             {
                 Disparar();
                 cooldownActual = Time.time + cooldownDisparo;
@@ -83,5 +91,10 @@ public class inputs : MonoBehaviour
             transform.position + new Vector3(-1.0f, 0),
             Quaternion.Euler(0, 0, 90)
         );
+        if (audioSource != null && sonidoDisparo != null)
+        {
+            audioSource.PlayOneShot(sonidoDisparo2);
+            audioSource.PlayOneShot(sonidoDisparo);
+        }
     }
 }
