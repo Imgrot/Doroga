@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      reisa_mutsuki_face_0: 1536335210042872532
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

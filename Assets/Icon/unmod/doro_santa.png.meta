@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ce59392c3409aba4a961ad88865e801e
+guid: da4569235a4cd9a4694c431993e7fd15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2096944348953613894
-    second: mika_mutsuki_face_0
+      213: 3734817813610280045
+    second: doro_santa_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mika_mutsuki_face_0
+      name: doro_santa_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 476
-        height: 478
+        x: 2
+        y: 6
+        width: 355
+        height: 333
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab96bd6893826e2e0800000000000000
-      internalID: -2096944348953613894
+      spriteID: d64ba09730db4d330800000000000000
+      internalID: 3734817813610280045
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      mika_mutsuki_face_0: -2096944348953613894
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

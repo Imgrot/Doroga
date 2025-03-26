@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      arona_mutsuki_face_0: -673920506334827439
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

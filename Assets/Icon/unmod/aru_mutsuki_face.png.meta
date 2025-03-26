@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      aru_mutsuki_face_0: 1167575979020269247
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

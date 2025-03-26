@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kayoko_mutsuki_face_0: -363190396990472992
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
