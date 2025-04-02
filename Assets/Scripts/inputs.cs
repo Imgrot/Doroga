@@ -1,8 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Security.Cryptography;
-using System.Threading;
 using UnityEngine;
 
 public class inputs : MonoBehaviour
@@ -11,24 +7,34 @@ public class inputs : MonoBehaviour
     public float speedY = 4.0f;
     public GameObject koyukiProyectile;
     public GameObject koyukiProyectileTriple;
+    public GameObject explosionPrefab;
     public bool disparoTriple = false;
     public bool speedBuffOn = false;
     public bool koyukiExplosiva = false;
+    public bool shieldOn = false;
 
     float cooldownDisparo = 0.4f;
     float cooldownActual = 0.0f;
+    public int vidas = 3;
 
     public AudioSource audioSource;
     public AudioClip sonidoDisparo;
     public AudioClip sonidoDisparo2;
 
+    public Sprite spriteDebuff;
+    private Sprite spriteOriginal;
+    private SpriteRenderer spriteRenderer;
+    private Vector3 escalaOriginal;
+
     void Start()
     {
-        transform.position = new Vector3(0, 0, 0);
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
         }
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteOriginal = spriteRenderer.sprite;
+        escalaOriginal = transform.localScale; //
     }
 
     void Update()
@@ -43,8 +49,8 @@ public class inputs : MonoBehaviour
         float movimientoVertical = Input.GetAxis("Vertical");
         if (speedBuffOn)
         {
-            transform.Translate(Vector3.right * speedX * 2 * movimientoHorizontal * Time.deltaTime);
-            transform.Translate(Vector3.up * speedY * 2 * movimientoVertical * Time.deltaTime);
+            transform.Translate(Vector3.right * speedX * 1.5f * movimientoHorizontal * Time.deltaTime);
+            transform.Translate(Vector3.up * speedY * 1.5f * movimientoVertical * Time.deltaTime);
         }
         else
         {
@@ -72,7 +78,6 @@ public class inputs : MonoBehaviour
             transform.position = new Vector3(-10.5f, transform.position.y, 0);
         }
     }
-
     public void InstanciarKoyuki()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
@@ -81,6 +86,33 @@ public class inputs : MonoBehaviour
             {
                 Disparar();
                 cooldownActual = Time.time + cooldownDisparo;
+            }
+        }
+    }
+    public void Damage()
+    {
+        if (shieldOn)
+        {
+            shieldOn = false;
+            spriteRenderer.sprite = spriteOriginal;
+            transform.localScale = escalaOriginal;
+            return;
+        }
+        else
+        {
+            vidas = vidas - 1;
+            Debug.Log("vidas: " + vidas);
+
+            if (vidas == 0)
+            {
+                Instantiate
+                (
+                    explosionPrefab,
+                    transform.position + new Vector3(0, 0),
+                    Quaternion.identity
+                );
+                Destroy(this.gameObject);
+                Debug.Log("GG WP Doro");
             }
         }
     }
@@ -158,6 +190,12 @@ public class inputs : MonoBehaviour
     public void koyukiExplosivaOn()
     {
         koyukiExplosiva = true;
+    }
+    public void activarEscudo()
+    {
+        shieldOn = true;
+        spriteRenderer.sprite = spriteDebuff;
+        transform.localScale = escalaOriginal * 1.2f;
     }
     public IEnumerator DisparoTriple()
     {

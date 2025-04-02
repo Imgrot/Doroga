@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2924982349800444956}
   - component: {fileID: 294253751378393906}
   - component: {fileID: 4665832917187864097}
+  - component: {fileID: -8225276993795226673}
   m_Layer: 0
   m_Name: arknights_yellow_slug_0
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.69, y: -2.1, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -162,3 +163,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 8.08, y: 5.21}
   m_EdgeRadius: 0
+--- !u!114 &-8225276993795226673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554155901373094870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ea3cfca3bb47d40adac7af3b5da9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedX: 5
+  speedY: 4
+  buffs:
+  - {fileID: 8529630762163029393, guid: aa720cfcff5f1a444bbb5a396b9be2fc, type: 3}
+  - {fileID: 5748881260557111390, guid: e8c91ba27d14ad241b53f8ee4eb3f91a, type: 3}
+  - {fileID: 9019212963806741612, guid: caeb064ddf40bb641a99ab6ca2cbe12a, type: 3}
+  - {fileID: 1152178158165854282, guid: f90759f804055524c81885e6f0edee5c, type: 3}
+  - {fileID: 4229046021738772923, guid: e81be9542f9c8864791300e4f1d97788, type: 3}
+  explosionPrefab: {fileID: 6383235939534878965, guid: 3e514a87c4008a547b975b1e286a67a3, type: 3}

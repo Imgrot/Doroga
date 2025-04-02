@@ -1,68 +1,39 @@
-using System.Collections;
 using UnityEngine;
 
 public class enemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public GameObject enemyPrefab2;
-    public GameObject enemyPrefab3;
-    public Transform spawnPoint;
-    public float spawnHeightMin = -4f;
-    public float spawnHeightMax = 4f;
+    [SerializeField] private GameObject[] enemigos;
 
-    public int nivelActual = 1;
-    public int oleadasPorNivel = 5;
-    public int enemigosBasePorOleada = 3;
-    public float tiempoEntreOleadas = 5f;
-    public float tiempoEntreEnemigos = 0.5f;
-
-    private int oleadaActual = 0;
-    private bool nivelEnCurso = true;
+    public float variacionY = 0.5f;
 
     void Start()
     {
-        StartCoroutine(IniciarOleadas());
+        ProgramarSiguienteSpawn();
     }
 
-    IEnumerator IniciarOleadas()
+    private void ProgramarSiguienteSpawn()
     {
-        while (nivelEnCurso)
+        float tiempoAleatorio = Random.Range(0.5f, 2.0f);
+        Invoke("EnemigoInstanciado", tiempoAleatorio);
+    }
+
+    private void EnemigoInstanciado()
+    {
+        if (enemigos.Length == 0) return;
+
+        float probabilidad = Random.value;
+
+        if (probabilidad <= 0.3f)
         {
-            oleadaActual++;
+            int indiceAleatorio = Random.Range(0, enemigos.Length);
+            GameObject enemigoSeleccionado = enemigos[indiceAleatorio];
 
-            int enemigosEnEstaOleada = enemigosBasePorOleada + (nivelActual * 2);
+            float posicionY = transform.position.y + Random.Range(-variacionY, variacionY);
+            Vector3 posicionSpawn = new Vector3(transform.position.x, posicionY, 0);
 
-            yield return StartCoroutine(SpawnOleada(enemigosEnEstaOleada));
-
-            if (oleadaActual >= oleadasPorNivel)
-            {
-                TerminarNivel();
-                yield break;
-            }
-
-            yield return new WaitForSeconds(tiempoEntreOleadas);
+            Instantiate(enemigoSeleccionado, posicionSpawn, Quaternion.identity);
         }
-    }
 
-    IEnumerator SpawnOleada(int cantidad)
-    {
-        for (int i = 0; i < cantidad; i++)
-        {
-            SpawnEnemy();
-            yield return new WaitForSeconds(tiempoEntreEnemigos);
-        }
-    }
-
-    void SpawnEnemy()
-    {
-        float randomY = Random.Range(spawnHeightMin, spawnHeightMax);
-        Vector3 spawnPosition = new Vector3(spawnPoint.position.x, randomY, 0);
-        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-    }
-
-    void TerminarNivel()
-    {
-        Debug.Log("Nivel completado: " + nivelActual);
-        nivelEnCurso = false;
+        ProgramarSiguienteSpawn();
     }
 }

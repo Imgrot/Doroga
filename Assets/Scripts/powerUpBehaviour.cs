@@ -35,6 +35,10 @@ public class powerUpBehaviour : MonoBehaviour
                 {
                     player.koyukiExplosivaOn();
                 }
+                else if(PowerUpId == 4)     //DORO HOLD
+                {
+                    player.activarEscudo();
+                }
             }
             Destroy(this.gameObject);
         }
