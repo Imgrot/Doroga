@@ -10,7 +10,6 @@ public class inputs : MonoBehaviour
     public GameObject explosionPrefab;
     public bool disparoTriple = false;
     public bool speedBuffOn = false;
-    public bool koyukiExplosiva = false;
     public bool shieldOn = false;
 
     public float cooldownDisparo = 0.4f;
@@ -112,7 +111,6 @@ public class inputs : MonoBehaviour
             {
                 speedBuffOn = false;
                 disparoTriple = false;
-                koyukiExplosiva = false;
                 shieldOn = false;
 
                 Instantiate
@@ -167,10 +165,6 @@ public class inputs : MonoBehaviour
     {
         speedBuffOn = true;
         StartCoroutine(DoroSpeed());
-    }
-    public void koyukiExplosivaOn()
-    {
-        koyukiExplosiva = true;
     }
     public void activarEscudo()
     {

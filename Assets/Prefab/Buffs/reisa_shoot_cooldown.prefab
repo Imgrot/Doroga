@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedX: 5
-  PowerUpId: 0
+  PowerUpId: 1
 --- !u!61 &6721239699782000723
 BoxCollider2D:
   m_ObjectHideFlags: 0

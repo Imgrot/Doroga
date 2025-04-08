@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GameOverDoro_0: 6597692068308149005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

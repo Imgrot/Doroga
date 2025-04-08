@@ -247,7 +247,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jugar_0: 1942938317178046097
+      jugar_1: -1287758418541626394
+      jugar_2: 5526416510636823164
+      jugar_3: -1572582569555002607
+      jugar_4: -8787132562494527673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -35,10 +35,6 @@ public class powerUpBehaviour : MonoBehaviour
                 {
                     player.doroSpeedOn();
                 }
-                else if (PowerUpId == 3)     //IROHA
-                {
-                    player.koyukiExplosivaOn();
-                }
                 else if (PowerUpId == 4)     //DORO HOLD
                 {
                     player.activarEscudo();
