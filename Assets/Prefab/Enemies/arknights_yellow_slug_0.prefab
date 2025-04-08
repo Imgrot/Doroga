@@ -180,7 +180,6 @@ MonoBehaviour:
   buffs:
   - {fileID: 8529630762163029393, guid: aa720cfcff5f1a444bbb5a396b9be2fc, type: 3}
   - {fileID: 5748881260557111390, guid: e8c91ba27d14ad241b53f8ee4eb3f91a, type: 3}
-  - {fileID: 9019212963806741612, guid: caeb064ddf40bb641a99ab6ca2cbe12a, type: 3}
   - {fileID: 1152178158165854282, guid: f90759f804055524c81885e6f0edee5c, type: 3}
   - {fileID: 4229046021738772923, guid: e81be9542f9c8864791300e4f1d97788, type: 3}
   explosionPrefab: {fileID: 6383235939534878965, guid: 3e514a87c4008a547b975b1e286a67a3, type: 3}

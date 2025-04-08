@@ -13,9 +13,10 @@ public class inputs : MonoBehaviour
     public bool koyukiExplosiva = false;
     public bool shieldOn = false;
 
-    float cooldownDisparo = 0.4f;
-    float cooldownActual = 0.0f;
-    public int vidas = 3;
+    public float cooldownDisparo = 0.4f;
+    public float cooldownActual = 0.0f;
+    public int vidas = 5;
+    public bool invis = false;
 
     public AudioSource audioSource;
     public AudioClip sonidoDisparo;
@@ -34,7 +35,7 @@ public class inputs : MonoBehaviour
         }
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteOriginal = spriteRenderer.sprite;
-        escalaOriginal = transform.localScale; //
+        escalaOriginal = transform.localScale;
     }
 
     void Update()
@@ -69,13 +70,13 @@ public class inputs : MonoBehaviour
         }
 
         // Limites Horizontales
-        if (transform.position.x > 10.5f)
+        if (transform.position.x > 5f)
         {
-            transform.position = new Vector3(10.5f, transform.position.y, 0);
+            transform.position = new Vector3(5f, transform.position.y, 0);
         }
-        else if (transform.position.x < -10.5f)
+        else if (transform.position.x < -8.1f)
         {
-            transform.position = new Vector3(-10.5f, transform.position.y, 0);
+            transform.position = new Vector3(-8.1f, transform.position.y, 0);
         }
     }
     public void InstanciarKoyuki()
@@ -100,72 +101,52 @@ public class inputs : MonoBehaviour
         }
         else
         {
-            vidas = vidas - 1;
-            Debug.Log("vidas: " + vidas);
+            if (invis == false)
+            {
+                vidas = vidas - 1;
+                invis = true;
+                StartCoroutine(CambiarOpacidad());
+            }
 
             if (vidas == 0)
             {
+                speedBuffOn = false;
+                disparoTriple = false;
+                koyukiExplosiva = false;
+                shieldOn = false;
+
                 Instantiate
                 (
                     explosionPrefab,
                     transform.position + new Vector3(0, 0),
                     Quaternion.identity
                 );
-                Destroy(this.gameObject);
-                Debug.Log("GG WP Doro");
+                Invoke("DestruirPersonaje", 0.1f);
             }
         }
     }
-
+    void DestruirPersonaje()
+    {
+        Destroy(this.gameObject);
+    }
     public void Disparar()
     {
         if (disparoTriple)
         {
-            if (koyukiExplosiva)
-            {
-                // CREAR KOYUKI EXPLOSIVA TRIPLE
-                Instantiate(
-                    koyukiProyectileTriple,
-                    transform.position + new Vector3(0, 0),
-                    Quaternion.Euler(0, 0, 90)
-                );
-                koyukiExplosiva = false;
-            }
-            else
-            {
-                Instantiate(
-                    koyukiProyectileTriple,
-                    transform.position + new Vector3(0, 0),
-                    Quaternion.Euler(0, 0, 90)
-                );
-            }
+            Instantiate(
+                koyukiProyectileTriple,
+                transform.position + new Vector3(0, 0),
+                Quaternion.Euler(0, 0, 90)
+            );
         }
         else
         {
-            if (koyukiExplosiva)
-            {
-                // CREAR KOYUKI EXPLOSIVA
-                Instantiate(
-                    koyukiProyectile,
-                    transform.position + new Vector3(0, 0),
-                    Quaternion.Euler(0, 0, 90)
-                );
-                koyukiExplosiva = false;
-            }
-            else
-            {
-                Instantiate(
-                    koyukiProyectile,
-                    transform.position + new Vector3(0, 0),
-                    Quaternion.Euler(0, 0, 90)
-                );
-            }
+            Instantiate(
+                koyukiProyectile,
+                transform.position + new Vector3(0, 0),
+                Quaternion.Euler(0, 0, 90)
+            );
         }
-        // Instantiate(
-        //     koyukiProyectile,
-        //     transform.position + new Vector3(-1.0f, 0),
-        //     Quaternion.Euler(0, 0, 90)
-        // );
         if (audioSource != null && sonidoDisparo != null && sonidoDisparo2 != null)
         {
             audioSource.PlayOneShot(sonidoDisparo2);
@@ -211,5 +192,18 @@ public class inputs : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         speedBuffOn = false;
+    }
+    public IEnumerator CambiarOpacidad()
+    {
+        Color originalColor = spriteRenderer.color;
+        for (int i = 0; i < 5; i++)
+        {
+            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+        invis = false;
     }
 }

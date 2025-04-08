@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Asteroids_Foreground_0: -5034741795944151528
+      Asteroids_Foreground_1: -2484399583691144286
+      Asteroids_Foreground_2: 7723543999257568306
+      Asteroids_Foreground_3: 5482614257475622984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

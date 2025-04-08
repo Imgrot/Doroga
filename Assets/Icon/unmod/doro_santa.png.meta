@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      doro_santa_0: 3734817813610280045
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

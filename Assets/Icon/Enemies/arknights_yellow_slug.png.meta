@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      arknights_yellow_slug_0: -6030439797131772692
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

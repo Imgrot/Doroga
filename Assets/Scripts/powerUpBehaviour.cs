@@ -11,6 +11,10 @@ public class powerUpBehaviour : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.right * speedX * Time.deltaTime);
+        if (transform.position.x > 7.0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,23 +23,23 @@ public class powerUpBehaviour : MonoBehaviour
             inputs player = collision.GetComponent<inputs>();
             if (player != null)
             {
-                if(PowerUpId == 0)          //DORO SANTA
+                if (PowerUpId == 0)          //DORO SANTA
                 {
                     player.koyukiTripleOn();
                 }
-                else if(PowerUpId == 1)     //REISA
+                else if (PowerUpId == 1)     //REISA
                 {
                     player.koyukiSpeedOn();
                 }
-                else if(PowerUpId == 2)     //HARE
+                else if (PowerUpId == 2)     //HARE
                 {
                     player.doroSpeedOn();
                 }
-                else if(PowerUpId == 3)     //IROHA
+                else if (PowerUpId == 3)     //IROHA
                 {
                     player.koyukiExplosivaOn();
                 }
-                else if(PowerUpId == 4)     //DORO HOLD
+                else if (PowerUpId == 4)     //DORO HOLD
                 {
                     player.activarEscudo();
                 }

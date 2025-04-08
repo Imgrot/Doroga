@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dorohold_0: -7351267458504146776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
